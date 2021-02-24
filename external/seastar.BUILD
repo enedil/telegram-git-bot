@@ -1,26 +1,25 @@
+load("@rules_foreign_cc//tools/build_defs:cmake.bzl", "cmake_external")
+
 filegroup(
-    name = "seastar_sources",
-    srcs = glob([
-        "testdata/*.dat",
-        "testdata/logs/**/*.log",
-    ]),
+        name = "seastar_srcs",
+        srcs = [
+                "**/*.cc",
+                "**/*.hh",
+        ],
+        visibility = ["//visibility:public"]
 )
 
-genrule(
-    name = "logo_miniature",
-    srcs = ["logo.png"],
-    outs = ["small_logo.png"],
-    cmd = "convert $< -resize 100x100 $@",
-)
-
-cc_binary(
-    name = "my_app",
-    srcs = ["my_app.cc"],
-    data = [":logo_miniature"],
-)
-
-
-cc_binary(
+cmake_external(
     name = "seastar",
-    visibility = ["//visibility:public"],
+    # expect to find ./lib/hello.lib as the result of the build
+    #lib_name = "hello",
+    # explicitly specify the generator
+    cmake_options = ["-GNinja"],
+    generate_crosstool_file = True,
+    lib_source = ":srcs",
+    # specify to call ninja after configuring
+    make_commands = [
+        "ninja",
+        "ninja install",
+    ],
 )
