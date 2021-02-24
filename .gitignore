@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Bazel related stuff
+bazel-bin
+bazel-out
+bazel-telegram-git-bot
+bazel-testlogs
