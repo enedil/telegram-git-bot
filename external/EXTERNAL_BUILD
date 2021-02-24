@@ -6,14 +6,14 @@ filegroup(
 )
 
 genrule(
-    name = "build_caca",
+    name = "build_seastar",
     srcs = [":everything_x"],
-    cmd = "cd external/some_shitty_lib && ./bootstrap && ./configure && make 2> /dev/null && cp cxx/caca++.o $@",
-    outs = ["caca++.o"],
+    cmd = "cd external/seastar_repository && ./configure.py --mode=release && ninja-build -C build/release/ seastar && cp build/release/libseastar.a ../../$@",
+    outs = ["libseastar.a"],
 )
 
 cc_library(
-    name = "some_shitty_lib",
-    data = [":build_caca"],
+    name = "seastar_lib",
+    data = [":build_seastar"],
     visibility = ["//visibility:public"],
 )
