@@ -1,11 +1,19 @@
-genrule(
-    name = "tell_something",
-    cmd = "echo dupa > result.txt",
-    outs = ["result.txt"],
+filegroup(
+    name = "everything_x",
+    srcs = glob([
+        "**/*",
+    ]),
 )
 
-cc_binary(
+genrule(
+    name = "build_caca",
+    srcs = [":everything_x"],
+    cmd = "cd external/some_shitty_lib && ./bootstrap && ./configure && make 2> /dev/null && cp cxx/caca++.o $@",
+    outs = ["caca++.o"],
+)
+
+cc_library(
     name = "some_shitty_lib",
-    deps = [":tell_something"],
+    data = [":build_caca"],
     visibility = ["//visibility:public"],
 )
