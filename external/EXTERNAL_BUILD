@@ -1,0 +1,11 @@
+genrule(
+    name = "tell_something",
+    cmd = "echo dupa > result.txt",
+    outs = ["result.txt"],
+)
+
+cc_binary(
+    name = "some_shitty_lib",
+    deps = [":tell_something"],
+    visibility = ["//visibility:public"],
+)
