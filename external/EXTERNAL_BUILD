@@ -6,9 +6,17 @@ filegroup(
 )
 
 genrule(
+    name = "configure",
+    srcs = [":configure.py"],
+    cmd = "cp '$<' '$@'",
+    outs = ["_configure.py"],
+)
+
+genrule(
     name = "build_seastar",
     srcs = [":everything_x"],
-    cmd = "cd external/seastar_repository && ./configure.py --mode=release && ninja-build -C build/release/ seastar && cp build/release/libseastar.a ../../$@",
+    tools = [":configure"],
+    cmd = "cd `dirname $(execpath :configure)` && ./_configure.py --mode=release && ninja-build -C build/release/ seastar && cp build/release/libseastar.a ../../$@",
     outs = ["libseastar.a"],
 )
 
