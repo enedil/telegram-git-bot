@@ -1,10 +1,12 @@
 #!/bin/sh
 
-cd /sourcetree/external/seastar
+sourcetree=$1
+
+cd $sourcetree/external/seastar
 ./configure.py --mode=release --without-apps --without-tests --without-demos
 ninja-build -C build/release/
-ninja-build -C build/release/ install
 
+echo $sourcetree/external/seastar/
 cd ../../build
-cmake .. -GNinja
+cmake ..  -DSEASTAR_DIR=$sourcetree/external/seastar/ -GNinja
 ninja

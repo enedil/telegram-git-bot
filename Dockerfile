@@ -8,4 +8,4 @@ RUN /scripts/deps.sh
 RUN mkdir /sourcetree
 VOLUME /sourcetree
 
-CMD /sourcetree/scripts/build.sh
+CMD /sourcetree/scripts/build.sh /sourcetree
