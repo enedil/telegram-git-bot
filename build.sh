@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 repo_root="$(dirname "$(realpath $0)")"
 
