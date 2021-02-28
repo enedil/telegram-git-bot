@@ -11,5 +11,6 @@ cmake_external(
 """
 cc_library(
         name = "main",
-        deps = ["@seastar"]
+        deps = ["@seastar"],
+        srcs = ["main.cc"]
 )
