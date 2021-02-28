@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# Not our code
+external/
+
 # Bazel related stuff
 bazel-bin
 bazel-out
