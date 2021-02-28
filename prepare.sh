@@ -8,6 +8,7 @@ function get_repo_dir() {
 
 
 function clone_external_deps() {
+    mkdir -p $repo_root/external
     cd $repo_root/external/
     SEASTAR_REPO="git@github.com:scylladb/seastar.git"
     _repo_dir="$(get_repo_dir $SEASTAR_REPO)"

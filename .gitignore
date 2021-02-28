@@ -32,7 +32,7 @@
 *.app
 
 # Not our code
-external/
+external/*
 
 # Bazel related stuff
 bazel-bin
