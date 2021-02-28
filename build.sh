@@ -14,6 +14,7 @@ fi
 
 cd $repo_root
 ./prepare.sh
+mkdir -p build
 $DOCKER build -t tel_git_bot_builder .
 $DOCKER run --volume "$repo_root:/sourcetree:Z" \
         tel_git_bot_builder
