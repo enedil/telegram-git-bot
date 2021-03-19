@@ -42,3 +42,6 @@ bazel-bin
 bazel-out
 bazel-telegram-git-bot
 bazel-testlogs
+
+.idea/
+cmake-build-debug/
