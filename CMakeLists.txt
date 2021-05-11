@@ -4,6 +4,8 @@ if ("${SEASTAR_TYPE}" STREQUAL "")
     set(SEASTAR_TYPE "release")
 endif ()
 
+add_compile_options(-g -Wall -Wextra)
+
 set(SEASTAR_BUILD_DIR "${SEASTAR_DIR}/build/${SEASTAR_TYPE}")
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "${SEASTAR_BUILD_DIR}" "${SEASTAR_BUILD_DIR}/_cooking/installed")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SEASTAR_DIR}/cmake")
