@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM fedora:33
 
 RUN mkdir "/scripts"
 COPY "external/seastar/install-dependencies.sh" "/scripts/deps.sh"
