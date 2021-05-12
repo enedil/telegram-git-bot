@@ -11,7 +11,6 @@ set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "${SEASTAR_BUILD_DIR}" "${SEASTAR_BUI
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SEASTAR_DIR}/cmake")
 
 project(TelegramGit)
-set(CMAKE_CXX_STANDARD 20)
 find_package(Seastar QUIET)
 
 function (seastar_generate_swagger)
